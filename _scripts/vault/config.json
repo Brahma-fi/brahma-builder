@@ -1,0 +1,27 @@
+{
+  "chainID2RPCURLs": {
+    "8453": [
+      "https://..."
+    ]
+  },
+  "consoleBaseURL": "https://...",
+  "executorConfig": [
+    {
+      "activityTimeout": "5m",
+      "address": "0xd1f745f0d14918a2c1e31153f2492891e4526ea4",
+      "chainId": 8453,
+      "every": "30s",
+      "id": "your-strategy-base",
+      "maximumRetryInterval": "10s",
+      "retryAttempts": 1,
+      "signer": "0x85cedd1f9aaba7bcccb49b8780fa969fe4eaa67e",
+      "strategyConfig": {},
+      "taskQueue": "my-task-queue",
+      "yieldFees": "10000"
+    }
+  ],
+  "syncSubscriptionsEvery": "30s",
+  "temporalHost": "127.0.0.1:7233",
+  "temporalNameSpace": "brahma-builder",
+  "executorPluginAddress": "0xb92929d03768a4F8D69552e15a8071EAf8E684ed"
+}
