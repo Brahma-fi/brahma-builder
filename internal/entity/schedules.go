@@ -2,6 +2,11 @@ package entity
 
 import "time"
 
+const (
+	StrategyIDMorphoRebalancerBase    = "morpho-rebalancer-base"
+	StrategyIDMorphoRebalancerMainnet = "morpho-rebalancer-mainnet"
+)
+
 type ExecutionStatus string
 
 const (
