@@ -70,4 +70,4 @@ type Executor interface {
 - Built-in support for parallel execution
 - Automatic resource scaling
 
-For reference implementation, see [Morpho Optimizer Strategy](link-to-morpho-optimizer).
+For reference implementation, see [Morpho Optimizer Strategy](https://github.com/Brahma-fi/brahma-builder/blob/main/internal/usecase/workflows/activities/morpho/activity.go).
