@@ -2,6 +2,9 @@
 
 Scalable, high-performance workflow scheduling engine built on Temporal for executing custom strategies with the Brahma Builder Kit API. Seamlessly manages workflow orchestration, fault tolerance, and Brahma ecosystem integration.
 
+- **[Architecture reference](./docs/architecture.md)**
+- **[Additional context](https://www.notion.so/brahmafi/Bringing-AI-Agents-On-Chain-Automate-Execute-and-Scale-with-Brahma-175a53ecb04c80d9b9d6cf16cd1dd98a#175a53ecb04c8078b143f61bd9681e2b)**
+
 ## Features
 
 - Zero-config workflow scheduling
@@ -9,65 +12,30 @@ Scalable, high-performance workflow scheduling engine built on Temporal for exec
 - Native Brahma Builder Kit integration
 - Temporal engine under the hood
 
-## Architecture
+## Running locally
 
-### Core Components
+1. Setup vault
 
-#### Executor Interface
-The primary interface for implementing custom strategies:
-```go
-type Executor interface {
-    Execute(ctx context.Context, req *entity.ExecuteTaskReq) (*entity.ExecuteTaskResp, error)
-}
+```
+make setup-local-vault
+make setup-local-plugin
 ```
 
-#### Runtime Components
-- **Temporal Scheduler**: Manages schedule creation and trigger handling
-- **Activity Executor**: Handles strategy execution and lifecycle management
-- **State Manager**: Maintains execution state and handles persistence
-- **Error Handler**: Implements retry mechanisms and failure recovery
+2. Setup env
 
-### Implementation Requirements
+```
+export VAULT_ADDR=127.0.0.1:8200
+export ENV=local
+```
 
-#### Strategy Development
-1. Implement the `Executor` interface
-2. Process incoming `ExecuteTaskReq`
-3. Return execution results via `ExecuteTaskResp`
+3. Run scheduler & workers
 
-#### System Integration
-- Strategies are automatically registered with Temporal
-- Schedules are created based on subscription configurations
-- Execution is triggered according to defined intervals
+```
+go run cmd/main.go scheduler|base-worker|morpho-worker
+```
 
-### Managed Components
+## Example
 
-#### Scheduling
-- Schedule creation and management
-- Trigger processing and distribution
-- Execution window management
-
-#### Execution
-- Activity lifecycle management
-- State persistence
-- Error handling and retries
-- Result processing
-
-#### Resource Management
-- Workload distribution
-- Execution throttling
-- Resource allocation
-
-### Design Considerations
-
-#### Strategy Implementation
-- Implement atomic, single-responsibility strategies
-- Utilize provided context for execution control
-- Handle edge cases within strategy implementation
-- Return structured responses via `ExecuteTaskResp`
-
-#### Performance
-- Strategies are executed as Temporal activities
-- Built-in support for parallel execution
-- Automatic resource scaling
+Morpho Yield Optimizer is a strategy that is built using Brahma builder. It maximises user’s Morpho positions by taking decisions on which vaults to choose based on APY; liquidity and TVL, on every rebalance.
 
 For reference implementation, see [Morpho Optimizer Strategy](https://github.com/Brahma-fi/brahma-builder/blob/main/internal/usecase/workflows/activities/morpho/activity.go).
