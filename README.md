@@ -2,6 +2,8 @@
 
 Scalable, high-performance workflow scheduling engine built on Temporal for executing custom strategies with the Brahma Builder Kit API. Seamlessly manages workflow orchestration, fault tolerance, and Brahma ecosystem integration.
 
+![alt text](./docs/image.png)
+
 - **[Architecture reference](./docs/architecture.md)**
 - **[Additional context](https://www.notion.so/brahmafi/Bringing-AI-Agents-On-Chain-Automate-Execute-and-Scale-with-Brahma-175a53ecb04c80d9b9d6cf16cd1dd98a#175a53ecb04c8078b143f61bd9681e2b)**
 
